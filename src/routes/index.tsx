@@ -1,11 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Phone, Check, Leaf, Shovel, Sprout, Trash2, Scissors, Mountain } from "lucide-react";
+import { ArrowRight, Phone, Check, Leaf, Shovel, Sprout, Trash2, Scissors, Mountain, Sparkles, Star } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import heroImg from "@/assets/hero-landscaping.jpg";
 import mulchImg from "@/assets/service-mulch.jpg";
 import gravelImg from "@/assets/service-gravel.jpg";
 import cleanupImg from "@/assets/service-cleanup.jpg";
+import removalImg from "@/assets/service-removal.jpg";
+import edgingImg from "@/assets/service-edging.jpg";
+import plantingImg from "@/assets/service-planting.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -29,10 +32,10 @@ export const Route = createFileRoute("/")({
 const services = [
   { icon: Leaf, title: "Mulch Installation", desc: "Fresh hardwood, dyed or natural — beds prepped, weeded and topped clean.", img: mulchImg },
   { icon: Mountain, title: "Gravel Installation", desc: "Driveways, walkways and decorative borders with crisp edging.", img: gravelImg },
-  { icon: Shovel, title: "Bush & Plant Removal", desc: "Old shrubs, stumps and overgrown plantings cleared down to bare soil.", img: null },
+  { icon: Shovel, title: "Bush & Plant Removal", desc: "Old shrubs, stumps and overgrown plantings cleared down to bare soil.", img: removalImg },
   { icon: Trash2, title: "Yard Cleanups", desc: "Spring, fall and storm cleanups — leaves, debris and brush hauled away.", img: cleanupImg },
-  { icon: Scissors, title: "Bed Edging", desc: "Hand-cut, knife-clean edges that make every bed look professional.", img: null },
-  { icon: Sprout, title: "Basic Planting", desc: "Shrubs, perennials and small trees installed and mulched in.", img: null },
+  { icon: Scissors, title: "Bed Edging", desc: "Hand-cut, knife-clean edges that make every bed look professional.", img: edgingImg },
+  { icon: Sprout, title: "Basic Planting", desc: "Shrubs, perennials and small trees installed and mulched in.", img: plantingImg },
 ];
 
 function HomePage() {
@@ -54,8 +57,8 @@ function HomePage() {
         <div className="mx-auto max-w-7xl px-6 py-28 md:py-40">
           <div className="max-w-2xl text-primary-foreground">
             <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary-foreground/30 bg-primary-foreground/10 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.18em] backdrop-blur">
-              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-              Locally owned · Free estimates
+              <Sparkles className="h-3.5 w-3.5 text-accent" />
+              Free Custom Quotes · Locally Owned
             </p>
             <h1 className="font-serif text-5xl leading-[1.05] tracking-tight md:text-7xl">
               Landscaping done the <em className="text-accent">right</em> way.
@@ -67,9 +70,9 @@ function HomePage() {
             <div className="mt-10 flex flex-wrap gap-3">
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-medium text-accent-foreground transition-transform hover:scale-[1.02]"
+                className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-medium text-accent-foreground shadow-lg shadow-accent/20 transition-transform hover:scale-[1.02]"
               >
-                Request a free quote
+                Get your free custom quote
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <a
@@ -187,29 +190,88 @@ function HomePage() {
         </div>
       </section>
 
+      {/* TESTIMONIALS */}
+      <section className="border-y border-border bg-secondary/50">
+        <div className="mx-auto max-w-7xl px-6 py-24">
+          <div className="max-w-2xl">
+            <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
+              What neighbors say
+            </p>
+            <h2 className="mt-3 font-serif text-4xl tracking-tight md:text-5xl">
+              Trusted by homeowners <em>up and down the block.</em>
+            </h2>
+          </div>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {[
+              {
+                quote: "JD showed up when he said he would, did clean work, and the price was exactly what we agreed on. Yard hasn't looked this good in years.",
+                name: "Megan R.",
+                tag: "Mulch + bed edging",
+              },
+              {
+                quote: "Got three quotes for a gravel driveway refresh. JD was the fairest and the only one who actually called me back. Easy choice.",
+                name: "Tom S.",
+                tag: "Gravel install",
+              },
+              {
+                quote: "Pulled out four overgrown shrubs and hauled everything away. No mess left behind. Will absolutely use him again in the spring.",
+                name: "Alicia P.",
+                tag: "Bush removal + cleanup",
+              },
+            ].map((t) => (
+              <figure
+                key={t.name}
+                className="flex flex-col rounded-xl border border-border bg-card p-7"
+              >
+                <div className="flex gap-0.5 text-accent">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} className="h-4 w-4 fill-current" />
+                  ))}
+                </div>
+                <blockquote className="mt-4 flex-1 font-serif text-lg leading-snug tracking-tight">
+                  "{t.quote}"
+                </blockquote>
+                <figcaption className="mt-6 border-t border-border pt-4">
+                  <p className="font-medium">{t.name}</p>
+                  <p className="text-xs uppercase tracking-[0.15em] text-muted-foreground">
+                    {t.tag}
+                  </p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="mx-auto max-w-7xl px-6 py-24">
-        <div className="rounded-2xl border border-border bg-secondary p-10 md:p-16">
-          <div className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
+        <div className="relative overflow-hidden rounded-2xl bg-primary p-10 text-primary-foreground md:p-16">
+          <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-accent/30 blur-3xl" />
+          <div className="relative flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
             <div className="max-w-xl">
-              <h2 className="font-serif text-4xl tracking-tight md:text-5xl">
+              <p className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/25 bg-primary-foreground/10 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.18em]">
+                <Sparkles className="h-3.5 w-3.5 text-accent" />
+                Free Custom Quote
+              </p>
+              <h2 className="mt-4 font-serif text-4xl tracking-tight md:text-5xl">
                 Ready for a sharper looking yard?
               </h2>
-              <p className="mt-3 text-muted-foreground">
-                Tell us what you need — we'll come take a look and give you
-                an honest quote, free of charge.
+              <p className="mt-3 text-primary-foreground/80">
+                Build your custom quote in under a minute — pick services,
+                pick a date, JD texts you back same-day.
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+                className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-medium text-accent-foreground hover:bg-accent/90"
               >
-                Get a free quote <ArrowRight className="h-4 w-4" />
+                Start free quote <ArrowRight className="h-4 w-4" />
               </Link>
               <a
                 href="tel:8566267061"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-6 py-3.5 text-sm font-medium text-foreground hover:bg-secondary"
+                className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/30 px-6 py-3.5 text-sm font-medium hover:bg-primary-foreground/10"
               >
                 <Phone className="h-4 w-4" /> 856-626-7061
               </a>

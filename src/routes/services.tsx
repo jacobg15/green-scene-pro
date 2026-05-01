@@ -4,6 +4,9 @@ import { SiteLayout } from "@/components/SiteLayout";
 import mulchImg from "@/assets/service-mulch.jpg";
 import gravelImg from "@/assets/service-gravel.jpg";
 import cleanupImg from "@/assets/service-cleanup.jpg";
+import removalImg from "@/assets/service-removal.jpg";
+import edgingImg from "@/assets/service-edging.jpg";
+import plantingImg from "@/assets/service-planting.jpg";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -42,8 +45,7 @@ const services = [
   {
     icon: Shovel,
     title: "Bush & Plant Removal",
-    img: null,
-    desc: "Old, overgrown or dead shrubs pulled out roots and all. We can grind small stumps and leave the area ready to replant or mulch.",
+    img: removalImg,
     bullets: ["Full root removal", "Small stump grinding", "Site cleanup included"],
   },
   {
@@ -56,15 +58,13 @@ const services = [
   {
     icon: Scissors,
     title: "Bed Edging",
-    img: null,
-    desc: "Hand-cut, knife-clean edges between beds and lawn — the single biggest upgrade most yards can get. Crisp lines, every time.",
+    img: edgingImg,
     bullets: ["Hand-cut edges", "Refresh or new install", "Pairs with mulch"],
   },
   {
     icon: Sprout,
     title: "Basic Planting",
-    img: null,
-    desc: "Shrubs, perennials and small trees sourced and installed. We dig proper holes, amend soil, water in and mulch.",
+    img: plantingImg,
     bullets: ["Shrubs & perennials", "Small trees", "Soil prep & mulch in"],
   },
 ];
