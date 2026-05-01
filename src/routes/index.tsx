@@ -57,8 +57,8 @@ function HomePage() {
         <div className="mx-auto max-w-7xl px-6 py-28 md:py-40">
           <div className="max-w-2xl text-primary-foreground">
             <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary-foreground/30 bg-primary-foreground/10 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.18em] backdrop-blur">
-              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-              Locally owned · Free estimates
+              <Sparkles className="h-3.5 w-3.5 text-accent" />
+              Free Custom Quotes · Locally Owned
             </p>
             <h1 className="font-serif text-5xl leading-[1.05] tracking-tight md:text-7xl">
               Landscaping done the <em className="text-accent">right</em> way.
@@ -70,9 +70,9 @@ function HomePage() {
             <div className="mt-10 flex flex-wrap gap-3">
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-medium text-accent-foreground transition-transform hover:scale-[1.02]"
+                className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-medium text-accent-foreground shadow-lg shadow-accent/20 transition-transform hover:scale-[1.02]"
               >
-                Request a free quote
+                Get your free custom quote
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <a
