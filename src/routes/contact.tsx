@@ -1,209 +1,134 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import { Phone, Mail, MapPin, Clock, Check } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, ShieldCheck, Sparkles } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
+import { QuoteWizard } from "@/components/QuoteWizard";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — JD's Exterior Services" },
+      { title: "Free Custom Quote — JD's Exterior Services" },
       {
         name: "description",
         content:
-          "Request a free landscaping quote from JD's Exterior Services. Call 856-626-7061 or send a message.",
+          "Get a free, no-obligation custom landscaping quote in under a minute. Pick services, choose a date, and JD will text you back. Call 856-626-7061.",
       },
-      { property: "og:title", content: "Contact JD's Exterior Services" },
-      { property: "og:description", content: "Free quotes — call 856-626-7061 or send a message." },
+      { property: "og:title", content: "Free Custom Quote — JD's Exterior Services" },
+      {
+        property: "og:description",
+        content: "Free quote in under a minute — pick services, pick a date, JD texts you back.",
+      },
     ],
   }),
   component: ContactPage,
 });
 
-const services = [
-  "Mulch Installation",
-  "Gravel Installation",
-  "Bush & Plant Removal",
-  "Yard Cleanups",
-  "Bed Edging",
-  "Basic Planting",
-  "Other / Not Sure",
-];
-
 function ContactPage() {
-  const [submitted, setSubmitted] = useState(false);
-
   return (
     <SiteLayout>
+      {/* HERO */}
       <section className="border-b border-border bg-primary text-primary-foreground">
-        <div className="mx-auto max-w-7xl px-6 py-24 md:py-32">
-          <p className="text-xs font-medium uppercase tracking-[0.2em] text-accent">
-            Get in touch
+        <div className="mx-auto max-w-7xl px-6 py-20 md:py-28">
+          <p className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/25 bg-primary-foreground/10 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.18em] backdrop-blur">
+            <Sparkles className="h-3.5 w-3.5 text-accent" />
+            100% Free · No obligation
           </p>
-          <h1 className="mt-4 max-w-3xl font-serif text-5xl tracking-tight md:text-7xl">
-            Free quotes. Honest answers. <em className="text-accent">Call anytime.</em>
+          <h1 className="mt-5 max-w-3xl font-serif text-5xl leading-[1.05] tracking-tight md:text-7xl">
+            Get your free <em className="text-accent">custom quote.</em>
           </h1>
+          <p className="mt-5 max-w-2xl text-lg text-primary-foreground/85">
+            Tell JD what you need and when you need it. He'll text you back
+            with a fair, honest price — usually the same day.
+          </p>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-24">
+      {/* WIZARD + SIDE INFO */}
+      <section className="mx-auto max-w-7xl px-6 py-16 md:py-24">
         <div className="grid gap-12 lg:grid-cols-5">
-          {/* INFO */}
           <aside className="space-y-8 lg:col-span-2">
             <div>
-              <h2 className="font-serif text-3xl tracking-tight">Reach JD directly</h2>
-              <p className="mt-3 text-muted-foreground">
-                The fastest way to get a quote is a call or text. Otherwise
-                drop a message and we'll get back to you the same day.
+              <h2 className="font-serif text-3xl tracking-tight">How it works</h2>
+              <ol className="mt-5 space-y-5">
+                {[
+                  ["Tell us what you need", "Pick the services you'd like priced."],
+                  ["Pick a date", "Choose when you'd like the work done."],
+                  ["Share your contact info", "Name, number, and the property address."],
+                  ["JD texts you back", "You'll get a fair quote, usually same-day."],
+                ].map(([title, desc], i) => (
+                  <li key={title} className="flex gap-4">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-medium text-primary-foreground">
+                      {i + 1}
+                    </span>
+                    <div>
+                      <p className="font-medium">{title}</p>
+                      <p className="mt-0.5 text-sm text-muted-foreground">{desc}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
+
+            <div className="rounded-xl border border-border bg-secondary/60 p-6">
+              <ShieldCheck className="h-6 w-6 text-accent" />
+              <p className="mt-3 font-medium">No pressure, no spam.</p>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Quotes are free and there's zero obligation. We don't share
+                your info with anyone.
               </p>
             </div>
 
-            <ul className="space-y-5">
-              <li className="flex items-start gap-4">
-                <span className="rounded-full bg-secondary p-3">
-                  <Phone className="h-5 w-5 text-primary" />
-                </span>
+            <ul className="space-y-4 text-sm">
+              <li className="flex items-start gap-3">
+                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
                 <div>
-                  <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Call or text</p>
-                  <a href="tel:8566267061" className="font-serif text-2xl tracking-tight hover:text-primary">
+                  <p className="text-xs uppercase tracking-[0.15em] text-muted-foreground">
+                    Prefer to call?
+                  </p>
+                  <a href="tel:8566267061" className="font-serif text-xl tracking-tight">
                     856-626-7061
                   </a>
                 </div>
               </li>
-              <li className="flex items-start gap-4">
-                <span className="rounded-full bg-secondary p-3">
-                  <Mail className="h-5 w-5 text-primary" />
-                </span>
+              <li className="flex items-start gap-3">
+                <Mail className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
                 <div>
-                  <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Email</p>
+                  <p className="text-xs uppercase tracking-[0.15em] text-muted-foreground">
+                    Email
+                  </p>
                   <a
                     href="mailto:quotes@jdsexteriorservices.com"
-                    className="text-base hover:text-primary"
+                    className="hover:text-primary"
                   >
                     quotes@jdsexteriorservices.com
                   </a>
                 </div>
               </li>
-              <li className="flex items-start gap-4">
-                <span className="rounded-full bg-secondary p-3">
-                  <MapPin className="h-5 w-5 text-primary" />
-                </span>
+              <li className="flex items-start gap-3">
+                <Clock className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
                 <div>
-                  <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Service area</p>
-                  <p>Local & surrounding neighborhoods</p>
+                  <p className="text-xs uppercase tracking-[0.15em] text-muted-foreground">
+                    Hours
+                  </p>
+                  <p>Mon–Sat · 7am – 7pm</p>
                 </div>
               </li>
-              <li className="flex items-start gap-4">
-                <span className="rounded-full bg-secondary p-3">
-                  <Clock className="h-5 w-5 text-primary" />
-                </span>
+              <li className="flex items-start gap-3">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
                 <div>
-                  <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Hours</p>
-                  <p>Mon–Sat · 7am – 7pm</p>
+                  <p className="text-xs uppercase tracking-[0.15em] text-muted-foreground">
+                    Service area
+                  </p>
+                  <p>Local & surrounding neighborhoods</p>
                 </div>
               </li>
             </ul>
           </aside>
 
-          {/* FORM */}
           <div className="lg:col-span-3">
-            <div className="rounded-2xl border border-border bg-card p-8 md:p-10">
-              {submitted ? (
-                <div className="flex flex-col items-center py-16 text-center">
-                  <div className="rounded-full bg-accent/15 p-4">
-                    <Check className="h-8 w-8 text-accent" />
-                  </div>
-                  <h3 className="mt-6 font-serif text-3xl tracking-tight">Got it — thanks!</h3>
-                  <p className="mt-3 max-w-sm text-muted-foreground">
-                    Your message is in. JD will reach out shortly. Need it
-                    faster? Call <a href="tel:8566267061" className="text-primary underline">856-626-7061</a>.
-                  </p>
-                </div>
-              ) : (
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    setSubmitted(true);
-                  }}
-                  className="space-y-5"
-                >
-                  <h2 className="font-serif text-3xl tracking-tight">Request a free quote</h2>
-                  <div className="grid gap-5 md:grid-cols-2">
-                    <Field label="Name" name="name" required />
-                    <Field label="Phone" name="phone" type="tel" required />
-                  </div>
-                  <Field label="Email" name="email" type="email" />
-                  <Field label="Property address" name="address" />
-
-                  <div>
-                    <label className="mb-1.5 block text-sm font-medium text-foreground">
-                      What do you need?
-                    </label>
-                    <select
-                      name="service"
-                      required
-                      className="w-full rounded-md border border-input bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
-                    >
-                      <option value="">Choose a service…</option>
-                      {services.map((s) => (
-                        <option key={s} value={s}>{s}</option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="mb-1.5 block text-sm font-medium text-foreground">
-                      Tell us about the job
-                    </label>
-                    <textarea
-                      name="message"
-                      rows={4}
-                      placeholder="Approx. size, timing, anything we should know…"
-                      className="w-full rounded-md border border-input bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full rounded-full bg-primary px-6 py-3.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-                  >
-                    Send request
-                  </button>
-                  <p className="text-center text-xs text-muted-foreground">
-                    No spam. We'll only use this to get back to you.
-                  </p>
-                </form>
-              )}
-            </div>
+            <QuoteWizard />
           </div>
         </div>
       </section>
     </SiteLayout>
-  );
-}
-
-function Field({
-  label,
-  name,
-  type = "text",
-  required = false,
-}: {
-  label: string;
-  name: string;
-  type?: string;
-  required?: boolean;
-}) {
-  return (
-    <div>
-      <label htmlFor={name} className="mb-1.5 block text-sm font-medium text-foreground">
-        {label}{required && <span className="text-accent"> *</span>}
-      </label>
-      <input
-        id={name}
-        name={name}
-        type={type}
-        required={required}
-        className="w-full rounded-md border border-input bg-background px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
-      />
-    </div>
   );
 }
