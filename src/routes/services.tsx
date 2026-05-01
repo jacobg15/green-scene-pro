@@ -4,6 +4,9 @@ import { SiteLayout } from "@/components/SiteLayout";
 import mulchImg from "@/assets/service-mulch.jpg";
 import gravelImg from "@/assets/service-gravel.jpg";
 import cleanupImg from "@/assets/service-cleanup.jpg";
+import removalImg from "@/assets/service-removal.jpg";
+import edgingImg from "@/assets/service-edging.jpg";
+import plantingImg from "@/assets/service-planting.jpg";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
