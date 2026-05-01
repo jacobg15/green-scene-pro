@@ -1,11 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Phone, Check, Leaf, Shovel, Sprout, Trash2, Scissors, Mountain } from "lucide-react";
+import { ArrowRight, Phone, Check, Leaf, Shovel, Sprout, Trash2, Scissors, Mountain, Sparkles, Star } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import heroImg from "@/assets/hero-landscaping.jpg";
 import mulchImg from "@/assets/service-mulch.jpg";
 import gravelImg from "@/assets/service-gravel.jpg";
 import cleanupImg from "@/assets/service-cleanup.jpg";
+import removalImg from "@/assets/service-removal.jpg";
+import edgingImg from "@/assets/service-edging.jpg";
+import plantingImg from "@/assets/service-planting.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -29,10 +32,10 @@ export const Route = createFileRoute("/")({
 const services = [
   { icon: Leaf, title: "Mulch Installation", desc: "Fresh hardwood, dyed or natural — beds prepped, weeded and topped clean.", img: mulchImg },
   { icon: Mountain, title: "Gravel Installation", desc: "Driveways, walkways and decorative borders with crisp edging.", img: gravelImg },
-  { icon: Shovel, title: "Bush & Plant Removal", desc: "Old shrubs, stumps and overgrown plantings cleared down to bare soil.", img: null },
+  { icon: Shovel, title: "Bush & Plant Removal", desc: "Old shrubs, stumps and overgrown plantings cleared down to bare soil.", img: removalImg },
   { icon: Trash2, title: "Yard Cleanups", desc: "Spring, fall and storm cleanups — leaves, debris and brush hauled away.", img: cleanupImg },
-  { icon: Scissors, title: "Bed Edging", desc: "Hand-cut, knife-clean edges that make every bed look professional.", img: null },
-  { icon: Sprout, title: "Basic Planting", desc: "Shrubs, perennials and small trees installed and mulched in.", img: null },
+  { icon: Scissors, title: "Bed Edging", desc: "Hand-cut, knife-clean edges that make every bed look professional.", img: edgingImg },
+  { icon: Sprout, title: "Basic Planting", desc: "Shrubs, perennials and small trees installed and mulched in.", img: plantingImg },
 ];
 
 function HomePage() {
